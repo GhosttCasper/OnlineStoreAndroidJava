@@ -1,0 +1,38 @@
+<resources>
+    <string name="hello">Hello!</string>
+
+    <string name="app_name">Online Store</string>
+    <!---->
+
+    <!-- Названия товаров -->
+    <string name="bookC">Book C</string>
+    <string name="bookCPlusPlus">Book C++</string>
+    <string name="bookCSharp">Book C#</string>
+    <string name="bookJava">Book Java</string>
+    <string name="bookObjectiveC">Book Objective-C</string>
+    <string name="bookSwift">Book Swift</string>
+    <string name="bookPython">Book Python</string>
+    <string name="bookKotlin">Book Kotlin</string>
+    <string name="bookPascal">Book Pascal</string>
+    <string name="bookGingerbread">Book Gingerbread</string>
+    <string name="bookIceCreamSandwich">Book Ice Cream Sandwich</string>
+    <string name="bookJellyBean">Book Jelly Bean</string>
+    <string name="bookKitKat">Book KitKat</string>
+    <string name="bookLollipop">Book Lollipop</string>
+    <string name="bookDonut">Book Donut</string>
+    <string name="bookEsoteric0">Book Castaneda for Beginners</string>
+    <string name="bookEsoteric1">Book Journeys into the bright world</string>
+    <string name="bookEsoteric2">Book Daemonologi.</string>
+    <string name="bookEsoteric3">Book Journey of Souls</string>
+    <string name="bookEsoteric4">Book Apocalypse</string>
+    <string name="diskCD0">CD Disk Happy Birthday Song</string>
+    <string name="diskCD1">CD Disk Titanic</string>
+    <string name="diskDVD0">DVD Disk Chess</string>
+    <string name="diskDVD1">DVD Disk Shape of You</string>
+
+    <!-- Содержание дисков -->
+    <string name="music">Music</string>
+    <string name="video">Video</string>
+    <string name="software">Software</string>
+
+</resources>
