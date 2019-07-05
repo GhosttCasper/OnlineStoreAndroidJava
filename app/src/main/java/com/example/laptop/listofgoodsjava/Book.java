@@ -6,6 +6,10 @@ public abstract class Book extends Goods {
 
     private int amountPages;
 
+    public int getAmountPages() {
+        return amountPages;
+    }
+
     public Book(String name, int price, String barcode, int amountPages) {
         super(name, price, barcode);
         this.amountPages = amountPages;
@@ -21,6 +25,10 @@ public abstract class Book extends Goods {
 
 class ProgrammingBook extends Book {
     private String programmingLanguage;
+
+    public String getProgrammingLanguage() {
+        return programmingLanguage;
+    }
 
     ProgrammingBook(String name, int price, String barcode, int amountPages, String programmingLanguage) {
         super(name, price, barcode, amountPages);
@@ -43,6 +51,10 @@ class ProgrammingBook extends Book {
 class CookingBook extends Book {
     private String mainIngredient;
 
+    public String getMainIngredient() {
+        return mainIngredient;
+    }
+
     public CookingBook(String name, int price, String barcode, int amountPages, String mainIngredient) {
         super(name, price, barcode, amountPages);
         this.mainIngredient = mainIngredient;
@@ -63,6 +75,10 @@ class CookingBook extends Book {
 
 class EsotericBook extends Book {
     private int minimumAgeReader;
+
+    public int getMinimumAgeReader() {
+        return minimumAgeReader;
+    }
 
     public EsotericBook(String name, int price, String barcode, int amountPages, int minimumAgeReader) {
         super(name, price, barcode, amountPages);

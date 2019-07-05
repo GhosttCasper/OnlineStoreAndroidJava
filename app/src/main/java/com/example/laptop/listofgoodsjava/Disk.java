@@ -1,9 +1,9 @@
 package com.example.laptop.listofgoodsjava;
 
+import java.util.ArrayList;
+
 //Диски бывают CD и DVD.
 //Независимо от типа диска, его содержимым может быть: музыка, видео, ПО.
-
-import java.util.ArrayList;
 
 public class Disk extends Goods {
     private final static int music = 0;
@@ -12,6 +12,14 @@ public class Disk extends Goods {
 
     private String content;
     private String type;
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getType() {
+        return type;
+    }
 
     public Disk(String name, int price, String barcode, String content, String type) {
         super(name, price, barcode);
@@ -32,5 +40,3 @@ public class Disk extends Goods {
         return information;
     }
 }
-
-

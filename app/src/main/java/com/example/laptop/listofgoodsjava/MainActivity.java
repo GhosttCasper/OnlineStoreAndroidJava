@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         public RecAdapter(List<Goods> myDataset, OnItemClickListener.OnItemClickCallback onItemClickCallback) {
             mDataset = myDataset;
             this.onItemClickCallback = onItemClickCallback;
-
         }
 
         // Create new views (invoked by the layout manager)
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             TextView title = (TextView) holder.itemView.findViewById(R.id.item_title);
-            title.setText(mDataset.get(position).name);
+            title.setText(mDataset.get(position).getName());
 
             TextView subtitle = (TextView) holder.itemView.findViewById(R.id.item_subtitle);
             subtitle.setText(mDataset.get(position).getSubcategory());

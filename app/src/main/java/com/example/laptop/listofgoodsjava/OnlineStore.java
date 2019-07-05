@@ -36,12 +36,26 @@ public class OnlineStore {
 
     public static List<Goods> goodsList = new ArrayList<Goods>();
 
-
     public static List<Goods> defaultGoods(Context context) {
         if (!goodsList.isEmpty())
             return goodsList;
 
         Resources res = context.getResources();
+
+        //  Esoteric Books
+        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric0), 100, "34567", 64, 6));
+        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric1), 101, "34568", 34, 12));
+        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric2), 102, "34569", 37, 14));
+        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric3), 103, "34560", 76, 16));
+        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric4), 104, "34561", 789, 95));
+
+        //  Programming Disk CD
+        goodsList.add(new Disk(res.getString(R.string.diskCD0), 10, "45678", res.getString(R.string.music), "CD"));
+        goodsList.add(new Disk(res.getString(R.string.diskCD1), 185, "45679", res.getString(R.string.video), "CD"));
+
+        //  Programming Disk DVS
+        goodsList.add(new Disk(res.getString(R.string.diskDVD0), 15, "56789", res.getString(R.string.software), "DVD"));
+        goodsList.add(new Disk(res.getString(R.string.diskDVD1), 60, "56780", res.getString(R.string.music), "DVD"));
 
         //  Programming Books
         goodsList.add(new ProgrammingBook(res.getString(R.string.bookC), 10, "12345", 298, "C"));
@@ -62,21 +76,26 @@ public class OnlineStore {
         goodsList.add(new CookingBook(res.getString(R.string.bookLollipop), 5, "23450", 10, "honey"));
         goodsList.add(new CookingBook(res.getString(R.string.bookDonut), 6, "23451", 56, "flour"));
 
-        //  Esoteric Books
-        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric0), 100, "34567", 64, 6));
-        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric1), 101, "34568", 34, 12));
-        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric2), 102, "34569", 37, 14));
-        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric3), 103, "34560", 76, 16));
-        goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric4), 104, "34561", 789, 95));
-
-        //  Programming Disk CD
-        goodsList.add(new Disk(res.getString(R.string.diskCD0), 10, "45678", res.getString(R.string.music), "CD"));
-        goodsList.add(new Disk(res.getString(R.string.diskCD1), 185, "45679", res.getString(R.string.video), "CD"));
-
-        //  Programming Disk DVS
-        goodsList.add(new Disk(res.getString(R.string.diskDVD0), 15, "56789", res.getString(R.string.software), "DVD"));
-        goodsList.add(new Disk(res.getString(R.string.diskDVD1), 60, "56780", res.getString(R.string.music), "DVD"));
+        groupByGoods();
 
         return goodsList;
+    }
+
+    private static void groupByGoods() {
+        if (goodsList.isEmpty())
+            return;
+
+        ArrayList<Goods> booksList = new ArrayList<Goods>();
+        ArrayList<Goods> disksList = new ArrayList<Goods>();
+        for (Goods curGoods : goodsList) {
+            if (curGoods instanceof Book) {
+                booksList.add(curGoods);
+            } else if (curGoods instanceof Disk)
+                disksList.add(curGoods);
+        }
+
+        goodsList.clear();
+        goodsList.addAll(booksList);
+        goodsList.addAll(disksList);
     }
 }
