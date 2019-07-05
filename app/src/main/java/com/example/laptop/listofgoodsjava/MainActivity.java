@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClicked(View view, int position) {
             Intent intent = new Intent(MainActivity.this, GoodsActivity.class);
-            //EditText editText = (EditText) findViewById(R.id.editText);
-            //String message = editText.getText().toString();
             intent.putExtra(EXTRA_MESSAGE, position);
             startActivity(intent);
         }
@@ -104,21 +102,11 @@ public class MainActivity extends AppCompatActivity {
             // - replace the contents of the view with that element
             TextView title = (TextView) holder.itemView.findViewById(R.id.item_title);
             title.setText(mDataset.get(position).name);
+
             TextView subtitle = (TextView) holder.itemView.findViewById(R.id.item_subtitle);
             subtitle.setText(mDataset.get(position).getSubcategory());
 
             holder.itemView.setOnClickListener(new OnItemClickListener(position, onItemClickCallback));
-
-//            holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(MainActivity.this, GoodsActivity.class);
-////                    EditText editText = (EditText) findViewById(R.id.editText);
-////                    String message = editText.getText().toString();
-//                    intent.putExtra(getPackageName(), mDataset.get(position));
-//                    startActivity(intent);
-//                }
-//            });
         }
 
         // Return the size of your dataset (invoked by the layout manager)

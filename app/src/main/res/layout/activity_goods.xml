@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:padding="6dp"
-    android:paddingLeft="10dp"
+    android:padding="10dp"
     tools:context=".GoodsActivity">
 
     <TextView
@@ -31,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_price"
+        android:paddingBottom="6dp"
         android:textSize="14sp" />
 
     <TextView

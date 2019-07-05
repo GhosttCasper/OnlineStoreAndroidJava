@@ -2,7 +2,6 @@ package com.example.laptop.listofgoodsjava;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,6 @@ public class OnlineStore {
 
 
     public static List<Goods> defaultGoods(Context context) {
-        //List<Goods> goodsList = new ArrayList<Goods>();
         if (!goodsList.isEmpty())
             return goodsList;
 
