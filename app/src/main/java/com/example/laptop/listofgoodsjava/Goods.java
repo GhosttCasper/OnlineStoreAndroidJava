@@ -24,5 +24,7 @@ public abstract class Goods {
         this.barcode = barcode;
     }
 
+    public abstract String getSubcategory();
+
 }
 

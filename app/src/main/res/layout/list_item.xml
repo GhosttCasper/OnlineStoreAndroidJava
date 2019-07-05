@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="6dp"
-    android:layout_marginRight="6dp"
-    android:padding="8dp">
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:padding="6dp"
+    android:paddingLeft="10dp">
 
     <TextView
         android:id="@+id/item_title"
@@ -13,4 +14,12 @@
         android:maxLines="3"
         android:textSize="16sp"
         android:textStyle="bold" />
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/item_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_title"
+        android:maxLines="1"
+        android:textSize="14sp" />
+</RelativeLayout>

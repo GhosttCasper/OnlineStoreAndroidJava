@@ -1,6 +1,6 @@
 package com.example.laptop.listofgoodsjava;
 
-public class Book extends Goods {
+public abstract class Book extends Goods {
 
     private int amountPages;
 
@@ -17,6 +17,11 @@ class ProgrammingBook extends Book {
         super(name, price, barcode, amountPages);
         this.programmingLanguage = programmingLanguage;
     }
+
+    @Override
+    public String getSubcategory() {
+        return "Programming";
+    }
 }
 
 class CookingBook extends Book {
@@ -26,6 +31,11 @@ class CookingBook extends Book {
         super(name, price, barcode, amountPages);
         this.mainIngredient = mainIngredient;
     }
+
+    @Override
+    public String getSubcategory() {
+        return "Cooking";
+    }
 }
 
 class EsotericBook extends Book {
@@ -34,5 +44,10 @@ class EsotericBook extends Book {
     public EsotericBook(String name, int price, String barcode, int amountPages, int minimumAgeReader) {
         super(name, price, barcode, amountPages);
         this.minimumAgeReader = minimumAgeReader;
+    }
+
+    @Override
+    public String getSubcategory() {
+        return "Esoteric";
     }
 }

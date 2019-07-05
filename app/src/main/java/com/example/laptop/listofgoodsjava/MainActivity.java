@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -57,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
         // you provide access to all the views for a data item in a view holder
         public class RecViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
-            public View textView;
+            public View view;
 
             public RecViewHolder(View v) {
                 super(v);
-                textView = v;
+                view = v;
             }
         }
 
@@ -86,8 +85,10 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(RecViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            TextView textView = (TextView) holder.itemView.findViewById(R.id.item_title);
-            textView.setText(mDataset.get(position).name);
+            TextView title = (TextView) holder.itemView.findViewById(R.id.item_title);
+            title.setText(mDataset.get(position).name);
+            TextView subtitle = (TextView) holder.itemView.findViewById(R.id.item_subtitle);
+            subtitle.setText(mDataset.get(position).getSubcategory());
         }
 
         // Return the size of your dataset (invoked by the layout manager)
