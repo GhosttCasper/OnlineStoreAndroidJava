@@ -1,5 +1,6 @@
 package com.example.laptop.listofgoodsjava;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,10 +24,22 @@ import java.util.List;
  */
 
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.laptop.listofgoodsjava.MESSAGE";
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    private OnItemClickListener.OnItemClickCallback onItemClickCallback = new OnItemClickListener.OnItemClickCallback() {
+        @Override
+        public void onItemClicked(View view, int position) {
+            Intent intent = new Intent(MainActivity.this, GoodsActivity.class);
+            //EditText editText = (EditText) findViewById(R.id.editText);
+            //String message = editText.getText().toString();
+            intent.putExtra(EXTRA_MESSAGE, position);
+            startActivity(intent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +57,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter
-        mAdapter = new RecAdapter(OnlineStore.defaultGoods(this));
+        mAdapter = new RecAdapter(OnlineStore.defaultGoods(this), onItemClickCallback);
         recyclerView.setAdapter(mAdapter);
     }
 
+
     public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewHolder> {
         private List<Goods> mDataset;
+        private OnItemClickListener.OnItemClickCallback onItemClickCallback;
 
         // Provide a reference to the views for each data item
         // Complex data items may need more than one view per item, and
@@ -65,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Provide a suitable constructor (depends on the kind of dataset)
-        public RecAdapter(List<Goods> myDataset) {
+        public RecAdapter(List<Goods> myDataset, OnItemClickListener.OnItemClickCallback onItemClickCallback) {
             mDataset = myDataset;
+            this.onItemClickCallback = onItemClickCallback;
+
         }
 
         // Create new views (invoked by the layout manager)
@@ -89,6 +106,19 @@ public class MainActivity extends AppCompatActivity {
             title.setText(mDataset.get(position).name);
             TextView subtitle = (TextView) holder.itemView.findViewById(R.id.item_subtitle);
             subtitle.setText(mDataset.get(position).getSubcategory());
+
+            holder.itemView.setOnClickListener(new OnItemClickListener(position, onItemClickCallback));
+
+//            holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(MainActivity.this, GoodsActivity.class);
+////                    EditText editText = (EditText) findViewById(R.id.editText);
+////                    String message = editText.getText().toString();
+//                    intent.putExtra(getPackageName(), mDataset.get(position));
+//                    startActivity(intent);
+//                }
+//            });
         }
 
         // Return the size of your dataset (invoked by the layout manager)
@@ -96,5 +126,24 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return mDataset.size();
         }
+    }
+}
+
+class OnItemClickListener implements View.OnClickListener {
+    private int position;
+    private OnItemClickCallback onItemClickCallback;
+
+    public OnItemClickListener(int position, OnItemClickCallback onItemClickCallback) {
+        this.position = position;
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    @Override
+    public void onClick(View view) {
+        onItemClickCallback.onItemClicked(view, position);
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(View view, int position);
     }
 }

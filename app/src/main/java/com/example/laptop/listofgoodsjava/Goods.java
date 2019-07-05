@@ -12,6 +12,9 @@ package com.example.laptop.listofgoodsjava;
 
      */
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Goods {
 
     public String name;
@@ -25,6 +28,14 @@ public abstract class Goods {
     }
 
     public abstract String getSubcategory();
+
+    public ArrayList<String> getStringInformation() {
+        ArrayList<String> information = new ArrayList<String>();
+        information.add(name);
+        information.add(String.valueOf(price));
+        information.add(barcode);
+        return information;
+    }
 
 }
 

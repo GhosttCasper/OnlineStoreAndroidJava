@@ -35,9 +35,13 @@ public class OnlineStore {
     private final static int diskDVD0 = 22;
     private final static int diskDVD1 = 23;
 
+    public static List<Goods> goodsList = new ArrayList<Goods>();
+
 
     public static List<Goods> defaultGoods(Context context) {
-        List<Goods> goodsList = new ArrayList<Goods>();
+        //List<Goods> goodsList = new ArrayList<Goods>();
+        if (!goodsList.isEmpty())
+            return goodsList;
 
         Resources res = context.getResources();
 
@@ -68,12 +72,12 @@ public class OnlineStore {
         goodsList.add(new EsotericBook(res.getString(R.string.bookEsoteric4), 104, "34561", 789, 95));
 
         //  Programming Disk CD
-        goodsList.add(new DiskCD(res.getString(R.string.diskCD0), 10, "45678", res.getString(R.string.music)));
-        goodsList.add(new DiskCD(res.getString(R.string.diskCD1), 185, "45679", res.getString(R.string.video)));
+        goodsList.add(new Disk(res.getString(R.string.diskCD0), 10, "45678", res.getString(R.string.music), "CD"));
+        goodsList.add(new Disk(res.getString(R.string.diskCD1), 185, "45679", res.getString(R.string.video), "CD"));
 
         //  Programming Disk DVS
-        goodsList.add(new DiskDVD(res.getString(R.string.diskDVD0), 15, "56789", res.getString(R.string.software)));
-        goodsList.add(new DiskDVD(res.getString(R.string.diskDVD1), 60, "56780", res.getString(R.string.music)));
+        goodsList.add(new Disk(res.getString(R.string.diskDVD0), 15, "56789", res.getString(R.string.software), "DVD"));
+        goodsList.add(new Disk(res.getString(R.string.diskDVD1), 60, "56780", res.getString(R.string.music), "DVD"));
 
         return goodsList;
     }

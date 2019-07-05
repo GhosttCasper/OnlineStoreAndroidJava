@@ -1,5 +1,7 @@
 package com.example.laptop.listofgoodsjava;
 
+import java.util.ArrayList;
+
 public abstract class Book extends Goods {
 
     private int amountPages;
@@ -7,6 +9,13 @@ public abstract class Book extends Goods {
     public Book(String name, int price, String barcode, int amountPages) {
         super(name, price, barcode);
         this.amountPages = amountPages;
+    }
+
+    @Override
+    public ArrayList<String> getStringInformation() {
+        ArrayList<String> information = super.getStringInformation();
+        information.add(String.valueOf(amountPages));
+        return information;
     }
 }
 
@@ -22,6 +31,13 @@ class ProgrammingBook extends Book {
     public String getSubcategory() {
         return "Programming";
     }
+
+    @Override
+    public ArrayList<String> getStringInformation() {
+        ArrayList<String> information = super.getStringInformation();
+        information.add(programmingLanguage);
+        return information;
+    }
 }
 
 class CookingBook extends Book {
@@ -36,6 +52,13 @@ class CookingBook extends Book {
     public String getSubcategory() {
         return "Cooking";
     }
+
+    @Override
+    public ArrayList<String> getStringInformation() {
+        ArrayList<String> information = super.getStringInformation();
+        information.add(mainIngredient);
+        return information;
+    }
 }
 
 class EsotericBook extends Book {
@@ -49,5 +72,12 @@ class EsotericBook extends Book {
     @Override
     public String getSubcategory() {
         return "Esoteric";
+    }
+
+    @Override
+    public ArrayList<String> getStringInformation() {
+        ArrayList<String> information = super.getStringInformation();
+        information.add(String.valueOf(minimumAgeReader));
+        return information;
     }
 }
